@@ -1,9 +1,18 @@
 package com.vanderson.vssystembackend.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Cliente {
+@Entity
+public class Cliente implements Serializable {
+    private static final long SerialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private LocalDateTime dataNascimento;
