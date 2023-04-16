@@ -62,6 +62,14 @@ public class Cliente implements Serializable {
         this.observacoes = observacoes;
     }
 
+
+    public Cliente(Long id, String nome, LocalDateTime dataNascimento,LocalDateTime dataCadastro) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.dataCadastro = dataCadastro;
+    }
+
     public Long getId() {
         return id;
     }
