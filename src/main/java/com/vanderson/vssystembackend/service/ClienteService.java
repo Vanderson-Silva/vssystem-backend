@@ -14,7 +14,7 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     // Metodo de busca pelo Id
-    public Cliente buscaPorIdCliente(Long id) {
+    public Cliente buscarPorIdCliente(Long id) {
         Optional<Cliente> obj = clienteRepository.findById(id);
         return obj.orElse(null);
     }
