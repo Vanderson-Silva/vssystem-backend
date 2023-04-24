@@ -1,11 +1,13 @@
 package com.vanderson.vssystembackend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -15,60 +17,40 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private LocalDateTime dataNascimento;
-    private LocalDateTime dataCadastro;
-    private String sexo;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataNascimento;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataCadastro;
     private String status;
-    private String cpf;
-    private String rg;
     private String endereco;
     private String numero;
-    private String complemento;
     private String bairro;
     private String cidade;
-    private String cep;
-    private String uf;
     private String telefone;
     private String celular;
-    private String email;
-    private String observacoes;
 
-    public Cliente(){
+
+    public Cliente() {
         super();
     }
 
-    public Cliente(Long id, String nome, LocalDateTime dataNascimento, LocalDateTime dataCadastro,
-                   String sexo, String status, String cpf, String rg, String endereco, String numero,
-                   String complemento, String bairro, String cidade, String cep, String uf, String telefone,
-                   String celular, String email, String observacoes) {
+    public Cliente(Long id, String nome, Date dataNascimento, Date dataCadastro,
+                   String status, String endereco, String numero,
+                   String bairro, String cidade, String telefone,
+                   String celular) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.dataCadastro = dataCadastro;
-        this.sexo = sexo;
         this.status = status;
-        this.cpf = cpf;
-        this.rg = rg;
         this.endereco = endereco;
         this.numero = numero;
-        this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.cep = cep;
-        this.uf = uf;
         this.telefone = telefone;
         this.celular = celular;
-        this.email = email;
-        this.observacoes = observacoes;
     }
 
-
-    public Cliente(Long id, String nome, LocalDateTime dataNascimento,LocalDateTime dataCadastro) {
-        this.id = id;
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.dataCadastro = dataCadastro;
-    }
 
     public Long getId() {
         return id;
@@ -86,28 +68,20 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public LocalDateTime getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDateTime dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
     }
 
     public String getStatus() {
@@ -116,22 +90,6 @@ public class Cliente implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
     }
 
     public String getEndereco() {
@@ -150,14 +108,6 @@ public class Cliente implements Serializable {
         this.numero = numero;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
     public String getBairro() {
         return bairro;
     }
@@ -172,22 +122,6 @@ public class Cliente implements Serializable {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
     }
 
     public String getTelefone() {
@@ -206,21 +140,6 @@ public class Cliente implements Serializable {
         this.celular = celular;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
 
     @Override
     public boolean equals(Object o) {
