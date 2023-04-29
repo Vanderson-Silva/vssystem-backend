@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*") // receber requisiçoes de multiplas fontes.
+@CrossOrigin("*") // recebe requisições de múltiplas fontes.
 @RestController
-@RequestMapping(value = "/todos")
+@RequestMapping(value = "/api")
 public class ClienteController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ClienteController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping
+    @GetMapping(value = "/clientes")
     public ResponseEntity<List<Cliente>> listarTodosClientes() {
         List<Cliente> list = clienteService.listarTodosClientes();
         return ResponseEntity.ok().body(list);
