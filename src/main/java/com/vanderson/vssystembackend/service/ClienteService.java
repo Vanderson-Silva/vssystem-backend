@@ -26,5 +26,10 @@ public class ClienteService {
         return list;
     }
 
+    // metodo para deletar um cliente.
+    public void delete(Long id){
+        clienteRepository.deleteById(id);
+    }
+
 
 }
