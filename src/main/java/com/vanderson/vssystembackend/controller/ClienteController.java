@@ -5,7 +5,9 @@ import com.vanderson.vssystembackend.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @CrossOrigin("*") // recebe requisições de múltiplas fontes.
@@ -28,9 +30,15 @@ public class ClienteController {
         List<Cliente> list = clienteService.listarTodosClientes();
         return ResponseEntity.ok().body(list);
     }
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void>delete(@PathVariable Long id){
+    @DeleteMapping(value = "/clientes/{id}")
+    public ResponseEntity<Cliente>delete(@PathVariable Long id){
         clienteService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping
+    public ResponseEntity<Cliente> create(@RequestBody Cliente obj){
+        obj = clienteService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }

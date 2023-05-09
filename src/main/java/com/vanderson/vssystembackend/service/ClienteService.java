@@ -31,5 +31,13 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
+    // metodo para Salvar um cliente.
+    public Cliente create(Cliente obj){
+        obj.setId(null);
+        return clienteRepository.save(obj);
+
+    }
+
+
 
 }

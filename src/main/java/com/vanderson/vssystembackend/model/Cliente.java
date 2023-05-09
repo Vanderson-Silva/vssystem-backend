@@ -18,8 +18,6 @@ public class Cliente implements Serializable {
     private Long id;
     private String nome;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dataNascimento;
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataCadastro;
     private String status;
     private String endereco;
@@ -34,13 +32,12 @@ public class Cliente implements Serializable {
         super();
     }
 
-    public Cliente(Long id, String nome, Date dataNascimento, Date dataCadastro,
+    public Cliente(Long id, String nome, Date dataCadastro,
                    String status, String endereco, String numero,
                    String bairro, String cidade, String telefone,
                    String celular) {
         this.id = id;
         this.nome = nome;
-        this.dataNascimento = dataNascimento;
         this.dataCadastro = dataCadastro;
         this.status = status;
         this.endereco = endereco;
@@ -68,13 +65,6 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
 
     public Date getDataCadastro() {
         return dataCadastro;
