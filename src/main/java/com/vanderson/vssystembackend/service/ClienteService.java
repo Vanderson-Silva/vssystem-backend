@@ -15,10 +15,11 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     // Metodo de busca pelo Id
-    public Cliente buscarPorIdCliente(Long id) {
+    public Cliente findById(Long id) {
         Optional<Cliente> obj = clienteRepository.findById(id);
         return obj.orElse(null);
     }
+
 
     // metodo para listar todos os clientes.
     public List<Cliente> listarTodosClientes() {
@@ -27,17 +28,28 @@ public class ClienteService {
     }
 
     // metodo para deletar um cliente.
-    public void delete(Long id){
+    public void delete(Long id) {
         clienteRepository.deleteById(id);
     }
 
     // metodo para Salvar um cliente.
-    public Cliente create(Cliente obj){
+    public Cliente create(Cliente obj) {
         obj.setId(null);
         return clienteRepository.save(obj);
 
     }
 
-
-
+    // metodo para editar um cliente
+    public Cliente update(Long id, Cliente obj) {
+        Cliente cliente = findById(id);
+        cliente.setNome(obj.getNome());
+        cliente.setStatus(obj.getStatus());
+        cliente.setEndereco(obj.getEndereco());
+        cliente.setNumero(obj.getNumero());
+        cliente.setBairro(obj.getBairro());
+        cliente.setCidade(obj.getCidade());
+        cliente.setTelefone(obj.getTelefone());
+        cliente.setCelular(obj.getCelular());
+        return clienteRepository.save(cliente);
+    }
 }

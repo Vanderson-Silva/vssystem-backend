@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin("*") // recebe requisições de múltiplas fontes.
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/clientes") //localhost:8080/clientes
 public class ClienteController {
 
     @Autowired
@@ -21,16 +21,17 @@ public class ClienteController {
     // metodo de busca por id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Cliente> buscarPorIdCliente(@PathVariable Long id) {
-        Cliente obj = clienteService.buscarPorIdCliente(id);
+        Cliente obj = clienteService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
-    @GetMapping(value = "/clientes")
+    // metodo que vai listar todos
+    @GetMapping()
     public ResponseEntity<List<Cliente>> listarTodosClientes() {
         List<Cliente> list = clienteService.listarTodosClientes();
         return ResponseEntity.ok().body(list);
     }
-    @DeleteMapping(value = "/clientes/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Cliente>delete(@PathVariable Long id){
         clienteService.delete(id);
         return ResponseEntity.noContent().build();
@@ -40,5 +41,11 @@ public class ClienteController {
         obj = clienteService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Cliente> update(@PathVariable Long id,@RequestBody Cliente obj){
+        Cliente cliente = clienteService.update(id,obj);
+        return ResponseEntity.ok().body(cliente);
     }
 }
