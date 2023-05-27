@@ -1,6 +1,6 @@
 package com.vanderson.vssystembackend.repository;
 
-import com.vanderson.vssystembackend.model.Cliente;
+
 import com.vanderson.vssystembackend.model.Fornecedor;
 import org.springframework.data.jpa.repository.JpaRepository;
 

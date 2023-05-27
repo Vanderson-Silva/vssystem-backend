@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin("*") // recebe requisições de múltiplas fontes.
 @RestController
-@RequestMapping(value = "/clientes") //localhost:8080/fornecedores
+@RequestMapping(value = "/fornecedores") //localhost:8080/fornecedores
 public class FornecedorController {
 
     @Autowired
