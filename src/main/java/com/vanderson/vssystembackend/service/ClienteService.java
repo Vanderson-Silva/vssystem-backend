@@ -43,6 +43,7 @@ public class ClienteService {
     public Cliente update(Long id, Cliente obj) {
         Cliente cliente = findById(id);
         cliente.setNome(obj.getNome());
+        cliente.setCpf(obj.getCpf());
         cliente.setStatus(obj.getStatus());
         cliente.setEndereco(obj.getEndereco());
         cliente.setNumero(obj.getNumero());

@@ -21,5 +21,9 @@ public class FornecedorService {
         return list;
     }
 
+    // metodo para excluir um fornecedor
+    public void delete(Long id){
+        fornecedorRepository.deleteById(id);
+    }
 
 }

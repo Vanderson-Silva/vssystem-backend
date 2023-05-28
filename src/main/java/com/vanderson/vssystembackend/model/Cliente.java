@@ -20,6 +20,7 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String cpf;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataCadastro;
     private String status;
@@ -31,12 +32,13 @@ public class Cliente implements Serializable {
     private String celular;
 
 
-    public Cliente(Long id, String nome, Date dataCadastro,
+    public Cliente(Long id, String nome,String cpf, Date dataCadastro,
                    String status, String endereco, String numero,
                    String bairro, String cidade, String telefone,
                    String celular) {
         this.id = id;
         this.nome = nome;
+        this.cpf = cpf;
         this.dataCadastro = dataCadastro;
         this.status = status;
         this.endereco = endereco;

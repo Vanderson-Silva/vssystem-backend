@@ -1,6 +1,7 @@
 package com.vanderson.vssystembackend.controller;
 
 
+
 import com.vanderson.vssystembackend.model.Fornecedor;
 import com.vanderson.vssystembackend.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class FornecedorController {
     public ResponseEntity<List<Fornecedor>> listarTodosFornecedores() {
         List<Fornecedor> list = fornecedorService.listarTodosFornecedores();
         return ResponseEntity.ok().body(list);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Fornecedor>delete(@PathVariable Long id){
+        fornecedorService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
