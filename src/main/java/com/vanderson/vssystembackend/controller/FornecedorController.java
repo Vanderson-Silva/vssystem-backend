@@ -38,9 +38,9 @@ public class FornecedorController {
         return ResponseEntity.noContent().build();
     }
     @PostMapping
-    public ResponseEntity<Fornecedor> create(@RequestBody Fornecedor obj){
-        obj = fornecedorService.create(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+    public ResponseEntity<Fornecedor> create(@RequestBody Fornecedor fornecedor){
+        fornecedor = fornecedorService.create(fornecedor);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(fornecedor.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
