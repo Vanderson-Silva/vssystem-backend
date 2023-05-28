@@ -15,9 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public abstract class Pessoa implements Serializable {
-
     private static final long SerialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
