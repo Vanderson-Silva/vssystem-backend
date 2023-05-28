@@ -23,7 +23,7 @@ public class ProdutoService {
 
 
     // metodo para listar todos os produtos.
-    public List<Produto> listarTodosFornecedores() {
+    public List<Produto> listarTodosProdutos() {
         List<Produto> list = produtoRepository.findAll();
         return list;
     }
