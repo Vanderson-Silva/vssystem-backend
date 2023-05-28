@@ -45,6 +45,12 @@ public abstract class Pessoa implements Serializable {
         this.telefone = telefone;
         this.celular = celular;
     }
+
+    public Pessoa(Long id, Date dataCadastro, String status) {
+        this.id = id;
+        this.dataCadastro = dataCadastro;
+        this.status = status;
+    }
 }
 
 

@@ -12,7 +12,6 @@ import java.util.Date;
 @Data
 public class Produto extends Pessoa {
 
-
     private String referencia;
     private String descricao;
     private String qtdmlprod;
@@ -21,10 +20,9 @@ public class Produto extends Pessoa {
     private String fornecedor;
     private int qdtEstoque;
 
-    public Produto(Long id, String nome, Date dataCadastro, String status, String endereco, String numero,
-                   String bairro, String cidade, String telefone, String celular, String referencia, String descricao,
+    public Produto(Long id, String referencia, String descricao, Date dataCadastro, String status,
                    String qtdmlprod, Double valorCompra, Double valorVenda, String fornecedor, int qdtEstoque) {
-        super(id, nome, dataCadastro, status, endereco, numero, bairro, cidade, telefone, celular);
+        super(id, dataCadastro, status);
         this.referencia = referencia;
         this.descricao = descricao;
         this.qtdmlprod = qtdmlprod;
