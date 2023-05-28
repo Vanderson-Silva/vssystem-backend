@@ -22,8 +22,14 @@ public class FornecedorService {
     }
 
     // metodo para excluir um fornecedor
-    public void delete(Long id){
+    public void delete(Long id) {
         fornecedorRepository.deleteById(id);
+    }
+
+    //metodo para salvar um fornecedor
+    public Fornecedor create(Fornecedor obj) {
+        obj.setId(null);
+        return fornecedorRepository.save(obj);
     }
 
 }

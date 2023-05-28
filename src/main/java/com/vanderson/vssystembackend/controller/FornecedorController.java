@@ -2,12 +2,15 @@ package com.vanderson.vssystembackend.controller;
 
 
 
+import com.vanderson.vssystembackend.model.Cliente;
 import com.vanderson.vssystembackend.model.Fornecedor;
 import com.vanderson.vssystembackend.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @CrossOrigin("*") // recebe requisições de múltiplas fontes.
@@ -29,6 +32,12 @@ public class FornecedorController {
     public ResponseEntity<Fornecedor>delete(@PathVariable Long id){
         fornecedorService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping
+    public ResponseEntity<Fornecedor> create(@RequestBody Fornecedor obj){
+        obj = fornecedorService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
 }
