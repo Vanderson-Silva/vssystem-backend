@@ -1,8 +1,6 @@
 package com.vanderson.vssystembackend.controller;
 
 
-
-import com.vanderson.vssystembackend.model.Cliente;
 import com.vanderson.vssystembackend.model.Fornecedor;
 import com.vanderson.vssystembackend.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,12 @@ public class FornecedorController {
     @Autowired
     private FornecedorService fornecedorService;
 
+    // metodo de busca por id
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Fornecedor> buscarPorIdFornecedor(@PathVariable Long id) {
+        Fornecedor obj = fornecedorService.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
 
     // metodo que vai listar todos
     @GetMapping()
@@ -38,9 +42,11 @@ public class FornecedorController {
         obj = fornecedorService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
-
     }
 
-
-
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Fornecedor> update(@PathVariable Long id,@RequestBody Fornecedor obj){
+        Fornecedor fornecedor = fornecedorService.update(id,obj);
+        return ResponseEntity.ok().body(fornecedor);
+    }
 }
