@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -19,6 +20,7 @@ public class Produto extends Pessoa {
     private Double valorVenda;
     private String fornecedor;
     private int qdtEstoque;
+   
 
     public Produto(Long id, String referencia, String descricao, Date dataCadastro, String status,
                    String qtdmlprod, Double valorCompra, Double valorVenda, String fornecedor, int qdtEstoque) {
