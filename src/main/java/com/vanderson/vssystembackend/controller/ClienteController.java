@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.net.URI;
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @Autowired
+    private EntityManager entityManager;
+
     // metodo de busca por id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Cliente> buscarPorIdCliente(@PathVariable Long id) {
@@ -28,7 +33,8 @@ public class ClienteController {
     // metodo que vai listar todos
     @GetMapping()
     public ResponseEntity<List<Cliente>> listarTodosClientes() {
-        List<Cliente> list = clienteService.listarTodosClientes();
+        TypedQuery<Cliente> query = entityManager.createQuery("SELECT c FROM Cliente c  ORDER BY c.id", Cliente.class);
+        List<Cliente> list = query.getResultList();
         return ResponseEntity.ok().body(list);
     }
     @DeleteMapping(value = "/{id}")

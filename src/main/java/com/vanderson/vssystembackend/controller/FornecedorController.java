@@ -1,6 +1,7 @@
 package com.vanderson.vssystembackend.controller;
 
 
+import com.vanderson.vssystembackend.model.Cliente;
 import com.vanderson.vssystembackend.model.Fornecedor;
 import com.vanderson.vssystembackend.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.net.URI;
 import java.util.List;
 
@@ -19,6 +22,9 @@ public class FornecedorController {
     @Autowired
     private FornecedorService fornecedorService;
 
+    @Autowired
+    private EntityManager entityManager;
+
     // metodo de busca por id
     @GetMapping(value = "/{id}")
     public ResponseEntity<Fornecedor> buscarPorIdFornecedor(@PathVariable Long id) {
@@ -29,7 +35,8 @@ public class FornecedorController {
     // metodo que vai listar todos
     @GetMapping()
     public ResponseEntity<List<Fornecedor>> listarTodosFornecedores() {
-        List<Fornecedor> list = fornecedorService.listarTodosFornecedores();
+        TypedQuery<Fornecedor> query = entityManager.createQuery("SELECT f FROM Fornecedor f  ORDER BY f.id", Fornecedor.class);
+        List<Fornecedor> list = query.getResultList();
         return ResponseEntity.ok().body(list);
     }
     @DeleteMapping(value = "/{id}")
